@@ -1,9 +1,11 @@
 #include <iostream>
+
 using namespace std;
 
 int main(void) {
-    int t,x,y,a,b,sum=0;
+    long long int t,x,y,a,b,sum=0;
     cin>>t;
+    while(t--){
     while(t--){
         int n=0;
         cin>>x>>y;
