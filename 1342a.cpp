@@ -1,10 +1,11 @@
 #include <iostream>
+
 using namespace std;
 
 int main(void) {
-    int t,x,y,a,b,sum=0;
+    long long int t,x,y,a,b,sum=0;
     cin>>t;
-    while(t){
+    while(t--){
         int n=0;
         cin>>x>>y;
         cin>>a>>b;
@@ -14,7 +15,7 @@ int main(void) {
             }
             n=y;
         } else if (y>x) {
-            for(int i=0;i<y-x;i++) {
+            for(int i=0;i<y-x;i++){
                 sum+=a;
             }
             n=x;
@@ -22,7 +23,6 @@ int main(void) {
         if(n) {
             for(int i=0;i<n;i++) sum+=b;
         } else sum=0;
-        t--;
         cout<<sum<<endl;
     }
 }
