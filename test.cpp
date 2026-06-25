@@ -3,8 +3,5 @@
 using namespace std;
 
 int main(void){
-    srand(time(NULL));
-    int r=rand();
-
-    cout<<r%26;
+    cout<<1%2
 }

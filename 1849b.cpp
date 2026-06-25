@@ -5,7 +5,6 @@
 #include <algorithm>
 
 
-
 using namespace std;
 
 int main(void) {
@@ -13,30 +12,65 @@ int main(void) {
     cin>>t;
     while(t--) {
         long long n,k;
-        long long ind_cout[n];
         cin>>n>>k;
         long long monster[n];
-        for(int i : monster) {
-            cin>>monster[i];
+        for(int i=0;i<n;i++) {
+            long long temp1;
+            cin>>temp1;
+            if (temp1%k==0) monster[i]=k; 
+            else monster[i]=temp1%k;
         }
-        long long ind;
-        while((*max_element(monster,monster + n))||(*max_element(monster,monster + n))<0) {
-            long long temp;
-            for(int i=0;i<n;i++) {
-                if (monster[i]==*max_element(monster,monster + n)) {
-                    monster[i]-=k;
-                    temp=i;
+        int loopState = *max_element(monster,monster + n);
+        while(loopState-=k) {
+            for (int i=0;i<n;i++) {
+                if (monster[i]==*max_element(monster,monster + n)){
+                    cout<<i<<" ";
                 }
             }
-            for(ind;)
-        }
-        
-        for(int i=0;i<n;i++) {
-            cout<<monster[i];
         }
     }
-        // long long temp;
-        // for(int i=0;i<n;i++) {
-        //     if (arr[i]<arr[i+1]) temp=arr[i+1];
-        // }
 }
+
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+
+// using namespace std;
+
+// int main() {
+//     int t;
+//     cin >> t;
+
+//     while (t--) {
+//         int n;
+//         long long k;
+//         cin >> n >> k;
+
+//         vector<pair<long long,int>> v;
+
+//         for (int i = 1; i <= n; i++) {
+//             long long a;
+//             cin >> a;
+
+//             long long rem = a % k;
+
+//             if (rem == 0)
+//                 rem = k;
+
+//             v.push_back({rem, i});
+//         }
+
+//         sort(v.begin(), v.end(),
+//             [](auto &a, auto &b) {
+//                 if (a.first != b.first)
+//                     return a.first > b.first;
+//                 return a.second < b.second;
+//             });
+
+//         for (auto &p : v)
+//             cout << p.second << ' ';
+
+//         cout << '\n';
+//     }
+// }
