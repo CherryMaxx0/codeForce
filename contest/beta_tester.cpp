@@ -13,9 +13,10 @@ int main(void) {
 
     for (long long int i=0;i<m;i++) {
         if(u[i]==initRm) {
-            for(;i<m)
+            distRm++;
+            
         }
+        else cout<<distRm;
     }
-
 
 }
