@@ -16,20 +16,29 @@ int main(void) {
         cin>>n>>k;
         long long monster[n];
         vector<long long> uniqHealth;
+
+        int monsIsTrue=0;
         for(long long i=0;i<n;i++) {
             long long a;
             cin>>a;
-            if (a%k==0) {
-                monster[i]=k;
-            } else {
-                monster[i]=a%k;
+            if (a%k==0) monster[i]=0;
+            else monster[i]=a%k;
+            
+            if(monster[i]==monsIsTrue) {
+                uniqHealth.insert(uniqHealth.begin(),0);
+                monsIsTrue--;
             }
+            bool isFalse=true;
             for(long long j=0;j<uniqHealth.size();j++){
-                if(uniqHealth[j]!=monster[i]) {
+                if(uniqHealth[j]==monster[i]) isFalse=false;
+                if (isFalse) {
                     uniqHealth.push_back(monster[i]); 
                     break;
                 }
             }
+        }
+        for(long long i=0;i<uniqHealth.size();i++) {
+            cout<<uniqHealth[i]<<' ';
         }
     }       
 }
