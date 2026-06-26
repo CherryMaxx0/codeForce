@@ -3,6 +3,7 @@
 #include <cmath>
 #include <string>
 #include <algorithm>
+#include <vector>
 
 
 using namespace std;
@@ -14,21 +15,23 @@ int main(void) {
         long long n,k;
         cin>>n>>k;
         long long monster[n];
-        for(int i=0;i<n;i++) {
-            long long temp1;
-            cin>>temp1;
-            if (temp1%k==0) monster[i]=k; 
-            else monster[i]=temp1%k;
-        }
-        int loopState = *max_element(monster,monster + n);
-        while(loopState-=k) {
-            for (int i=0;i<n;i++) {
-                if (monster[i]==*max_element(monster,monster + n)){
-                    cout<<i<<" ";
+        vector<long long> uniqHealth;
+        for(long long i=0;i<n;i++) {
+            long long a;
+            cin>>a;
+            if (a%k==0) {
+                monster[i]=k;
+            } else {
+                monster[i]=a%k;
+            }
+            for(long long j=0;j<uniqHealth.size();j++){
+                if(uniqHealth[j]!=monster[i]) {
+                    uniqHealth.push_back(monster[i]); 
+                    break;
                 }
             }
         }
-    }
+    }       
 }
 
 
