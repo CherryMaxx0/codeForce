@@ -17,33 +17,42 @@ int main(void) {
         long long monster[n];
         vector<long long> uniqHealth;
 
-        int monsIsTrue=0;
         for(long long i=0;i<n;i++) {
             long long a;
             cin>>a;
-            if (a%k==0) monster[i]=0;
+            if (a%k==0) monster[i]=k;
             else monster[i]=a%k;
-            
-            if(monster[i]==monsIsTrue) {
-                uniqHealth.insert(uniqHealth.begin(),0);
-                monsIsTrue--;
+            if(i==0) {
+                uniqHealth.push_back(monster[i]);
+                continue;
             }
-            bool isFalse=true;
+            bool isMatchNotExist=false;
+            bool isZeroMatchNotExist=false;
             for(long long j=0;j<uniqHealth.size();j++){
-                if(uniqHealth[j]==monster[i]) isFalse=false;
-                if (isFalse) {
-                    uniqHealth.push_back(monster[i]); 
-                    break;
+                if(monster[i]==k) {
+                    if(uniqHealth[j]==monster[i]) isZeroMatchNotExist=false;   
+                    else isZeroMatchNotExist=true;     
+                } else {
+                    if(uniqHealth[j]==monster[i]) isMatchNotExist=false;
+                    else isMatchNotExist=true;    
                 }
             }
+            if (isMatchNotExist) uniqHealth.push_back(monster[i]); 
+            if (isZeroMatchNotExist) uniqHealth.insert(uniqHealth.begin(),monster[i]);
         }
         for(long long i=0;i<uniqHealth.size();i++) {
-            cout<<uniqHealth[i]<<' ';
+            for(long long j=0;j<n;j++) {
+                if(monster[j]==uniqHealth[i]) cout<<j+1<<' ';
+            }
         }
+        cout<<endl;
     }       
 }
 
 
+// for(long long i=0;i<uniqHealth.size();i++) {
+//     cout<<uniqHealth[i]<<' ';
+// }
 // #include <iostream>
 // #include <vector>
 // #include <algorithm>
