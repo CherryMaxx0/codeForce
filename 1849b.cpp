@@ -6,7 +6,7 @@
 #include <vector>
 
 using namespace std;
-
+//SOLVED
 int main() {
     int t;
     cin >> t;
@@ -43,7 +43,7 @@ int main() {
         cout << '\n';
     }
     
-
+}
 // This are not possible to meet the conditions it requires all at once
 // int main(void) {
 //     int t;
